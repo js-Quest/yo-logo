@@ -1,5 +1,6 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
+// const generateLogo = require('../lib/svg-generate')
 
 inquirer.prompt([
   {
@@ -9,7 +10,7 @@ inquirer.prompt([
   },
   {
     type: 'input',
-    message: 'Type a color keyword or hexadecimal number to choose your TEXT color',
+    message: 'Type a color keyword (or the hexadecimal number) to choose your TEXT color',
     name: 'textColor',
   },
   {
@@ -23,15 +24,15 @@ inquirer.prompt([
   },
   {
     type: 'input',
-    message: 'Type a color keyword or hexadecimal number to choose your SHAPE color',
+    message: 'Type a color keyword (or the hexadecimal number) to choose your SHAPE color',
     name: 'shapeColor',
   }
 ])
   .then((answers) => {
     console.log(answers);
 
-    fs.writeFile('../examples/logoExample.svg', generateLogo(answers), (err) =>
-      err ? console.error(err) : console.log('success - generated Lgoo!')
-    );
+    // fs.writeFile('../examples/logo.svg', generateLogo(answers), (err) =>
+    //   err ? console.error(err) : console.log('success - generated logo.svg!')
+    // );
 
   });
