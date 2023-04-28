@@ -30,6 +30,7 @@ inquirer.prompt([
 ])
   .then((answers) => {
     console.log(answers);
+    // switch case for value of shape? for which shape to generate in fs.writeFile
 
     // fs.writeFile('../examples/logo.svg', generateLogo(answers), (err) =>
     //   err ? console.error(err) : console.log('success - generated logo.svg!')
