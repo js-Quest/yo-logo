@@ -1,6 +1,6 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-// const generateLogo = require('../lib/svg-generate')
+const generateLogo = require('./lib/svg-generate')
 
 inquirer.prompt([
   {
@@ -18,9 +18,9 @@ inquirer.prompt([
     message: 'What shape would you like your logo to be?',
     name: 'shape',
     choices: ['circle', 'triangle', 'square'],
-    filter(value) {
-      return value;
-    }
+    // filter(value) {
+    //   return value;
+    // }
   },
   {
     type: 'input',
@@ -30,10 +30,10 @@ inquirer.prompt([
 ])
   .then((answers) => {
     console.log(answers);
-    // switch case for value of shape? for which shape to generate in fs.writeFile
 
-    // fs.writeFile('../examples/logo.svg', generateLogo(answers), (err) =>
-    //   err ? console.error(err) : console.log('success - generated logo.svg!')
-    // );
+
+    fs.writeFile('./examples/logo.svg', generateLogo(answers), (err) =>
+      err ? console.error(err) : console.log('success - generated logo.svg!')
+    );
 
   });
