@@ -45,12 +45,12 @@ promptQuestions=()=>{
         default:
           console.log('error, not a valid shape');
       };
-
+      const renderShape = () => {
       const svgString = `<svg width='300' height='200' xmlns="http://www.w3.org/2000/svg">
       ${shape.render()}
       ${shape.addText()}
       </svg>`
-      validateAllAnswers = () => {
+     
         if (answers.text.length == 0 || answers.text.length > 3){
         throw new Error('please enter up to three characters for your logo text')
       }else if (validateColor(answers.textColor) == false && validateColor(answers.textColor)==false) {
@@ -61,10 +61,8 @@ promptQuestions=()=>{
         fs.writeFile('./examples/logo.svg', svgString, (err) =>
         err ? console.error(err) : console.log('success - generated logo.svg!'))   
         }
-      }   
+      }
+      renderShape(shape);
     })
 }
-
 promptQuestions();
-
-module.exports = validateAllAnswers;
