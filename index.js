@@ -45,7 +45,7 @@ promptQuestions=()=>{
         default:
           console.log('error, not a valid shape');
       };
-      const renderShape = () => {
+      function renderShape(shape){
       const svgString = `<svg width='300' height='200' xmlns="http://www.w3.org/2000/svg">
       ${shape.render()}
       ${shape.addText()}
@@ -64,5 +64,8 @@ promptQuestions=()=>{
       }
       renderShape(shape);
     })
-}
-promptQuestions();
+  }
+  promptQuestions();
+  
+
+module.exports = validateColor;
