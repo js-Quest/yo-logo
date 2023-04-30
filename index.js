@@ -1,6 +1,9 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 const { Circle, Triangle, Square } = require('./lib/shapes.js');
+const validateColor = require('validate-color').default;
+
+
 
 promptQuestions=()=>{
   inquirer.prompt([
@@ -19,9 +22,6 @@ promptQuestions=()=>{
       message: 'What shape would you like your logo to be?',
       name: 'shape',
       choices: ['circle', 'triangle', 'square'],
-      // filter(value) {
-      //   return value;
-      // }
     },
     {
       type: 'input',
@@ -50,16 +50,17 @@ promptQuestions=()=>{
       ${shape.render()}
       ${shape.addText()}
       </svg>`
-
-      
-      
-
-
-      
-      fs.writeFile('./examples/logo.svg', svgString, (err) =>
-      err ? console.error(err) : console.log('success - generated logo.svg!')
-      );
-      
+      if (answers.text.length == 0 || answers.text.length > 3){
+        throw new Error('please enter up to three characters for your logo text')
+      }else if (validateColor(answers.textColor) == false && validateColor(answers.textColor)==false) {
+        throw new Error('please enter a valid CSS color keyword or hexadecimal code for your TEXT color')
+      } else if (validateColor(answers.shapeColor) == false && validateColor(answers.shapeColor) == false) {
+        throw new Error('please enter a valid CSS color keyword or hexadecimal code for your SHAPE color')
+      }else{
+        fs.writeFile('./examples/logo.svg', svgString, (err) =>
+        err ? console.error(err) : console.log('success - generated logo.svg!')
+        );   
+      }   
     });
 }
 
