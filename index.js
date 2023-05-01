@@ -1,11 +1,10 @@
 const inquirer = require('inquirer');
-const fs = require('fs');
-const { Circle, Triangle, Square } = require('./lib/shapes.js');
-const validateColor = require('validate-color').default;
+const { Circle, Triangle, Square, renderLogo} = require('./lib/shapes.js');
+const { validateTextLength, validateShapeColor, validateTextColor } = require('./lib/validate.js');
 
 
 
-promptQuestions=()=>{
+promptQuestions = () => {
   inquirer.prompt([
     {
       type: 'input',
@@ -44,28 +43,13 @@ promptQuestions=()=>{
           break;
         default:
           console.log('error, not a valid shape');
-      };
-      function renderShape(shape){
-      const svgString = `<svg width='300' height='200' xmlns="http://www.w3.org/2000/svg">
-      ${shape.render()}
-      ${shape.addText()}
-      </svg>`
-     
-        if (answers.text.length == 0 || answers.text.length > 3){
-        throw new Error('please enter up to three characters for your logo text')
-      }else if (validateColor(answers.textColor) == false && validateColor(answers.textColor)==false) {
-        throw new Error('please enter a valid CSS color keyword or hexadecimal code for your TEXT color')
-      } else if (validateColor(answers.shapeColor) == false && validateColor(answers.shapeColor) == false) {
-        throw new Error('please enter a valid CSS color keyword or hexadecimal code for your SHAPE color')
-      }else{
-        fs.writeFile('./examples/logo.svg', svgString, (err) =>
-        err ? console.error(err) : console.log('success - generated logo.svg!'))   
-        }
       }
-      renderShape(shape);
-    })
-  }
-  promptQuestions();
-  
 
-module.exports = validateColor;
+      validateShapeColor(answers.shapeColor);
+      validateTextColor(answers.textColor);
+      validateTextLength(answers.text);
+      renderLogo(shape);
+    
+    })
+};
+promptQuestions();
