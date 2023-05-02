@@ -1,4 +1,4 @@
 <svg width='300' height='200' xmlns="http://www.w3.org/2000/svg">
-      <rect x="73" y="40" width="160" height="160"style="fill:white;stroke-width:3;stroke:rgb(0,0,0)" />
-      <text x="150" y="125" font-size="40" text-anchor="middle"  fill="red">qqq</text>
+      <rect x="73" y="40" width="160" height="160"style="fill:#3395FF;stroke-width:3;stroke:rgb(0,0,0)" />
+      <text x="150" y="125" font-size="40" text-anchor="middle"  fill="red">YES</text>
       </svg>
