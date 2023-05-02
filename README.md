@@ -27,7 +27,9 @@ https://developer.mozilla.org/en-US/
   w3Schools
 https://www.w3schools.com/
 
+https://www.freecodecamp.org/news/svg-tutorial-learn-to-code-images/
 
+https://thenewcode.com/1037/SVG-Shape-Elements-polygon
 
   ## Tests
   Testing using the jest package, run 'npm run test' in your CLI to see results of test.  Testing suites are labelled with the '.test' in the name of the file.
