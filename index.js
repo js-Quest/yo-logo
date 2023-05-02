@@ -3,7 +3,7 @@ const { Circle, Triangle, Square, renderLogo} = require('./lib/shapes.js');
 const { validateTextLength, validateShapeColor, validateTextColor } = require('./lib/validate.js');
 
 
-
+// function for questions
 promptQuestions = () => {
   inquirer.prompt([
     {
@@ -31,6 +31,7 @@ promptQuestions = () => {
     .then((answers) => {
       console.log(answers);
       let shape;
+      // switch case for retrieving user input shape to render
       switch (answers.shape) {
         case 'circle':
           shape = new Circle(answers.text, answers.textColor, answers.shapeColor);
@@ -45,9 +46,12 @@ promptQuestions = () => {
           console.log('error, not a valid shape');
       }
 
+      // validation functions for input limitations
       validateShapeColor(answers.shapeColor);
       validateTextColor(answers.textColor);
       validateTextLength(answers.text);
+
+      // function to render the logo.svg
       renderLogo(shape);
     
     })
